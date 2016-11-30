@@ -20,9 +20,9 @@ def find_inactive_users():
         if db.empty:
             inactive_users.append((user['user_email'], signup_date.date(), ()))
             if new_consent.empty:
-                inactive_users_new_consent+=str(user['user_email'])+', '
-            else:
                 inactive_users_old_consent+=str(user['user_email'])+', '
+            else:
+                inactive_users_new_consent+=str(user['user_email'])+', '
             if signup_date.timestamp < september_first:
                 inactive_users_before_september+=str(user['user_email'])+', '
             else:
@@ -34,9 +34,9 @@ def find_inactive_users():
             if last_usercache_call.empty:
                 inactive_users.append((user['user_email'], signup_date.date(), ()))
                 if new_consent.empty:
-                    inactive_users_new_consent+=str(user['user_email'])+', '
-                else:
                     inactive_users_old_consent+=str(user['user_email'])+', '
+                else:
+                    inactive_users_new_consent+=str(user['user_email'])+', '
                 if signup_date.timestamp < september_first:
                     inactive_users_before_september+=str(user['user_email'])+', '
                 else:
@@ -45,9 +45,9 @@ def find_inactive_users():
                 if last_usercache_call.iloc[0]['ts'] < one_week_ago_ts:
                     inactive_users.append((user['user_email'], signup_date.date(), arrow.get(last_usercache_call.iloc[0]['ts']).date()))
                     if new_consent.empty:
-                        inactive_users_new_consent+=str(user['user_email'])+', '
-                    else:
                         inactive_users_old_consent+=str(user['user_email'])+', '
+                    else:
+                        inactive_users_new_consent+=str(user['user_email'])+', '
                     if signup_date.timestamp < september_first:
                         inactive_users_before_september+=str(user['user_email'])+', '
                     else:
